@@ -103,12 +103,26 @@ airflow version
 
 You should see `2.2.1`. Great.
 
-Next we'll download our code to the machine.
+Next we'll download our code to the machine using `git`. Find the HTTPS URL for your repository through the GitHub interface.
 
-Next we're going to create a shell script named _env.sh_ that will contain our environment variables, both for configuring Airflow and for configuring our pipeline. In the following block, the `nano` command opens up an editor called Nano so that we can edit the file.
+![HTTPS URL for code](screenshots/env-download-code.png)
+
+**In the following snippet I use my repository's URL, but yours will be different.**
 
 ```bash
-mkdir airflow
+git clone https://github.com/musa-509-fall-2021/lab-07-airflow-in-the-cloud.git
+```
+
+Finally we're going to create a shell script named _env.sh_ that will contain our environment variables, both for configuring Airflow and for configuring our pipeline. In the following block,
+* the `ln` command creates an alias (a "link") to whatever folder contains our DAGs and plugins -- for me, that's a folder called _airflow/_ inside of my repository
+
+  ![Path to my Airflow home](screenshots/env-symbolic-link-path.png)
+* the `cp` command copies the file named _env.template.sh_ to a new file named _env.sh_
+* the `nano` command opens up an editor called Nano so that we can edit the file.
+
+```bash
+ln -s $HOME/lab-07-airflow-in-the-cloud/airflow airflow
+cp $HOME/airflow/env.template.sh $HOME/airflow/env.sh
 nano $HOME/airflow/env.sh
 ```
 
@@ -163,11 +177,19 @@ We need to allow access from our IP address to port 8080. We could be specific a
 
 Go to Firewall/Create Firewall Rule
 
+![Firewall menu item](screenshots/networking-firewall-menu-item.png)
+
 Create a firewall rule called `airflow-port` rule
+
+![New firewall rule](screenshots/networking-new-firewall-rule.png)
+
+![New firewall rule -- more options](screenshots/networking-more-firewall-options.png)
 
 Go to Compute Engine/VM instances and click on your compute instance.
 
 Edit the instance and apply the firewall rule by adding a **Network tag**
+
+![Configure VM tags for firewall](screenshots/networking-configure-vm-tags.png)
 
 ### 7. First execution of Airflow
 
@@ -185,6 +207,7 @@ airflow scheduler
 
 Go to your Google Cloud Console and copy the external IP to your clipboard.
 
+![VM IP Address](screenshots/networking-vm-ip-address.png)
 Finally, on your browser go to http://COMPUTE-ENGINE-IP:8080 and login with the user and password you have created when the DB was initialized.
 
 Our Airflow 2 instance should be running!
@@ -213,7 +236,7 @@ nohup airflow webserver -p 8080 >> webserver.$(date -I).log &
 
 Exit nano (**ctrl+x**, then **y**, then **enter**) and run the following command to make the script runnable (`chmod` stands for "change mode", and `+x` adds the "executable" mode to the file).
 
-```bash
+```bas
 chmod +x $HOME/airflow/startup.sh
 ```
 
@@ -224,3 +247,9 @@ $HOME/airflow/startup.sh
 ```
 
 ### 9. Set up access to GCP resources
+
+```bash
+nano ${HOME}/google-app-creds.json
+```
+
+From your local machine, paste the contents of your GCP key into this file.
