@@ -68,7 +68,7 @@ Head back over to the virtual machine you created. On the console click on SSH t
 
 ![Menu item to SSH into virtual machine](screenshots/ssh-start-terminal.png)
 
-On the terminal let's install Python and update the catalog of available packages.
+On the terminal let's install Python and update the catalog of available packages. **Note that you may have to paste these commands one at a time if using the GCP online terminal. Also note that the `\` characters at the end of the lines mean that the command is continued on the next line.**
 
 ```bash
 sudo apt update
