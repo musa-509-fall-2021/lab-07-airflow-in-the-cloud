@@ -62,6 +62,8 @@ Because this is going to be a very light-weight instance, under storage select H
 
 ![DB storage settings](screenshots/db-storage-settings.png)
 
+Finally, under the **Connection** settings, ensure that you have a **Private IP** selected. Choose **default** as the associated network. ou may be prompted to enable an additional service. This is ok.
+
 ### 4. Install Airflow
 
 Head back over to the virtual machine you created. On the console click on SSH to start a terminal.
