@@ -80,7 +80,14 @@ sudo apt install -y python3-pip \
 sudo pip3 install --upgrade pip
 ```
 
-[Install Airflow](https://airflow.apache.org/docs/apache-airflow/stable/installation/index.html#using-pypi) and extra libraries.
+We will be installing a few things that we can run (such as the `airflow` command) into a folder named _~/.local/bin/_, so we want to make sure that the computer knows to look here for files that we can run ("executable" files). Run this in the terminal:
+
+```bash
+echo 'export PATH=$PATH:$HOME/.local/bin' >> ~/.bashrc
+source ~/.bashrc
+```
+
+Next, [Install Airflow](https://airflow.apache.org/docs/apache-airflow/stable/installation/index.html#using-pypi) and extra libraries onto the virtual machine.
 
 ```bash
 pip install \
