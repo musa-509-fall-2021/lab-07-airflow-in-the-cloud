@@ -100,7 +100,7 @@ pip install \
     sqlalchemy-bigquery \
     google-cloud-bigquery-storage \
     "python-dotenv" \
-    "apache-airflow[google]==2.2.1" \
+    "apache-airflow==2.2.1" \
     --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.1/constraints-$(python3 -V | cut -d' ' -f2 | cut -d'.' -f1,2).txt"
 ```
 
@@ -148,7 +148,7 @@ export AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:${AIRFLOW_
 export AIRFLOW__CORE__FERNET_KEY=''
 export AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION='true'
 export AIRFLOW__CORE__LOAD_EXAMPLES='false'
-export AIRFLOW__WEBSERVER__WORKERS=3
+export AIRFLOW__WEBSERVER__WORKERS=2
 export AIRFLOW__API__AUTH_BACKEND='airflow.api.auth.backend.basic_auth'
 
 # Pipeline script vars
