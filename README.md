@@ -258,6 +258,21 @@ Now we can run that script to start Airflow.
 $HOME/airflow/startup.sh
 ```
 
+After running that command you should see output like:
+
+```
+nohup: redirecting stderr to stdout
+nohup: redirecting stderr to stdout
+```
+
+If so, everything is normal and your server should be running. When you run `ls` you should see two log files, one named `webserver.<todays-date>.log` and one named `scheduler.<todays-date>.log` (the `<todays-date>` portion will be replaced with today's actual date for the files). You can view the live log output from the webserver by running:
+
+```bash
+tail -f webserver.<todays-date>.log
+```
+
+Again, replace the `<todays-date>` portion with today's actual date. To stop viewing the contents of the log file, just press **ctrl+c**.
+
 ### 9. Set up access to GCP resources
 
 ```bash
