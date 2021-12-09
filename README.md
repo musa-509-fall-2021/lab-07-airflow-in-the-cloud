@@ -95,6 +95,7 @@ Next, [Install Airflow](https://airflow.apache.org/docs/apache-airflow/stable/in
 pip install \
     requests \
     pandas \
+    geopandas \
     google-cloud-storage \
     SQLAlchemy[postgresql_psycopg2binary] \
     sqlalchemy-bigquery \
