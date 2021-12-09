@@ -96,6 +96,7 @@ pip install \
     requests \
     pandas \
     geopandas \
+    pandas-gbq \
     google-cloud-storage \
     SQLAlchemy[postgresql_psycopg2binary] \
     sqlalchemy-bigquery \
